@@ -1,0 +1,600 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		92795ADB1D2D189900440599 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92795ADA1D2D189900440599 /* AppDelegate.swift */; };
+		92795AE01D2D189900440599 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92795ADE1D2D189900440599 /* Main.storyboard */; };
+		92795AE31D2D189900440599 /* DMDownloadTaskManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 92795AE11D2D189900440599 /* DMDownloadTaskManager.xcdatamodeld */; };
+		92795AE51D2D189900440599 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92795AE41D2D189900440599 /* Assets.xcassets */; };
+		92795AE81D2D189900440599 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92795AE61D2D189900440599 /* LaunchScreen.storyboard */; };
+		92795AF31D2D189900440599 /* DMDownloadTaskManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92795AF21D2D189900440599 /* DMDownloadTaskManagerTests.swift */; };
+		92795AFE1D2D189900440599 /* DMDownloadTaskManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92795AFD1D2D189900440599 /* DMDownloadTaskManagerUITests.swift */; };
+		92795B171D2D1A1000440599 /* DownloadTaskEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92795B161D2D1A1000440599 /* DownloadTaskEntity.swift */; };
+		92795B191D2D1DE500440599 /* DownloadTaskDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92795B181D2D1DE500440599 /* DownloadTaskDataManager.swift */; };
+		92795B1B1D2D22C400440599 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92795B1A1D2D22C400440599 /* ViewController.swift */; };
+		92795B1E1D2D238600440599 /* TaskListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92795B1D1D2D238600440599 /* TaskListTableViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		92795AEF1D2D189900440599 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92795ACF1D2D189900440599 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92795AD61D2D189900440599;
+			remoteInfo = DMDownloadTaskManager;
+		};
+		92795AFA1D2D189900440599 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92795ACF1D2D189900440599 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92795AD61D2D189900440599;
+			remoteInfo = DMDownloadTaskManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		92795AD71D2D189900440599 /* DMDownloadTaskManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DMDownloadTaskManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		92795ADA1D2D189900440599 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		92795ADF1D2D189900440599 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		92795AE21D2D189900440599 /* DMDownloadTaskManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DMDownloadTaskManager.xcdatamodel; sourceTree = "<group>"; };
+		92795AE41D2D189900440599 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		92795AE71D2D189900440599 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		92795AE91D2D189900440599 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92795AEE1D2D189900440599 /* DMDownloadTaskManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DMDownloadTaskManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		92795AF21D2D189900440599 /* DMDownloadTaskManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMDownloadTaskManagerTests.swift; sourceTree = "<group>"; };
+		92795AF41D2D189900440599 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92795AF91D2D189900440599 /* DMDownloadTaskManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DMDownloadTaskManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		92795AFD1D2D189900440599 /* DMDownloadTaskManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMDownloadTaskManagerUITests.swift; sourceTree = "<group>"; };
+		92795AFF1D2D189900440599 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92795B161D2D1A1000440599 /* DownloadTaskEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadTaskEntity.swift; path = TaskList/Module/Entity/DownloadTaskEntity.swift; sourceTree = "<group>"; };
+		92795B181D2D1DE500440599 /* DownloadTaskDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadTaskDataManager.swift; path = TaskList/Module/DownloadTaskDataManager.swift; sourceTree = "<group>"; };
+		92795B1A1D2D22C400440599 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		92795B1D1D2D238600440599 /* TaskListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskListTableViewController.swift; path = TaskList/Controller/TaskListTableViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		92795AD41D2D189900440599 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92795AEB1D2D189900440599 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92795AF61D2D189900440599 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		92795ACE1D2D189900440599 = {
+			isa = PBXGroup;
+			children = (
+				92795AD91D2D189900440599 /* DMDownloadTaskManager */,
+				92795AF11D2D189900440599 /* DMDownloadTaskManagerTests */,
+				92795AFC1D2D189900440599 /* DMDownloadTaskManagerUITests */,
+				92795AD81D2D189900440599 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		92795AD81D2D189900440599 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				92795AD71D2D189900440599 /* DMDownloadTaskManager.app */,
+				92795AEE1D2D189900440599 /* DMDownloadTaskManagerTests.xctest */,
+				92795AF91D2D189900440599 /* DMDownloadTaskManagerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		92795AD91D2D189900440599 /* DMDownloadTaskManager */ = {
+			isa = PBXGroup;
+			children = (
+				92795B0E1D2D18F100440599 /* TaskList */,
+				92795B0D1D2D18EB00440599 /* CreateTask */,
+				92795B0B1D2D18DC00440599 /* TaskDetail */,
+				92795ADA1D2D189900440599 /* AppDelegate.swift */,
+				92795B1A1D2D22C400440599 /* ViewController.swift */,
+				92795ADE1D2D189900440599 /* Main.storyboard */,
+				92795AE41D2D189900440599 /* Assets.xcassets */,
+				92795AE61D2D189900440599 /* LaunchScreen.storyboard */,
+				92795AE91D2D189900440599 /* Info.plist */,
+				92795AE11D2D189900440599 /* DMDownloadTaskManager.xcdatamodeld */,
+			);
+			path = DMDownloadTaskManager;
+			sourceTree = "<group>";
+		};
+		92795AF11D2D189900440599 /* DMDownloadTaskManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				92795AF21D2D189900440599 /* DMDownloadTaskManagerTests.swift */,
+				92795AF41D2D189900440599 /* Info.plist */,
+			);
+			path = DMDownloadTaskManagerTests;
+			sourceTree = "<group>";
+		};
+		92795AFC1D2D189900440599 /* DMDownloadTaskManagerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				92795AFD1D2D189900440599 /* DMDownloadTaskManagerUITests.swift */,
+				92795AFF1D2D189900440599 /* Info.plist */,
+			);
+			path = DMDownloadTaskManagerUITests;
+			sourceTree = "<group>";
+		};
+		92795B0B1D2D18DC00440599 /* TaskDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = TaskDetail;
+			sourceTree = "<group>";
+		};
+		92795B0D1D2D18EB00440599 /* CreateTask */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CreateTask;
+			sourceTree = "<group>";
+		};
+		92795B0E1D2D18F100440599 /* TaskList */ = {
+			isa = PBXGroup;
+			children = (
+				92795B121D2D192A00440599 /* support */,
+				92795B111D2D191A00440599 /* Controller */,
+				92795B101D2D191700440599 /* View */,
+				92795B0F1D2D190E00440599 /* Module */,
+			);
+			name = TaskList;
+			sourceTree = "<group>";
+		};
+		92795B0F1D2D190E00440599 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				92795B151D2D19EC00440599 /* Entity */,
+				92795B181D2D1DE500440599 /* DownloadTaskDataManager.swift */,
+			);
+			name = Module;
+			sourceTree = "<group>";
+		};
+		92795B101D2D191700440599 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		92795B111D2D191A00440599 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				92795B1D1D2D238600440599 /* TaskListTableViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		92795B121D2D192A00440599 /* support */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = support;
+			sourceTree = "<group>";
+		};
+		92795B151D2D19EC00440599 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				92795B161D2D1A1000440599 /* DownloadTaskEntity.swift */,
+			);
+			name = Entity;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		92795AD61D2D189900440599 /* DMDownloadTaskManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92795B021D2D189900440599 /* Build configuration list for PBXNativeTarget "DMDownloadTaskManager" */;
+			buildPhases = (
+				92795AD31D2D189900440599 /* Sources */,
+				92795AD41D2D189900440599 /* Frameworks */,
+				92795AD51D2D189900440599 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DMDownloadTaskManager;
+			productName = DMDownloadTaskManager;
+			productReference = 92795AD71D2D189900440599 /* DMDownloadTaskManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+		92795AED1D2D189900440599 /* DMDownloadTaskManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92795B051D2D189900440599 /* Build configuration list for PBXNativeTarget "DMDownloadTaskManagerTests" */;
+			buildPhases = (
+				92795AEA1D2D189900440599 /* Sources */,
+				92795AEB1D2D189900440599 /* Frameworks */,
+				92795AEC1D2D189900440599 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				92795AF01D2D189900440599 /* PBXTargetDependency */,
+			);
+			name = DMDownloadTaskManagerTests;
+			productName = DMDownloadTaskManagerTests;
+			productReference = 92795AEE1D2D189900440599 /* DMDownloadTaskManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		92795AF81D2D189900440599 /* DMDownloadTaskManagerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92795B081D2D189900440599 /* Build configuration list for PBXNativeTarget "DMDownloadTaskManagerUITests" */;
+			buildPhases = (
+				92795AF51D2D189900440599 /* Sources */,
+				92795AF61D2D189900440599 /* Frameworks */,
+				92795AF71D2D189900440599 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				92795AFB1D2D189900440599 /* PBXTargetDependency */,
+			);
+			name = DMDownloadTaskManagerUITests;
+			productName = DMDownloadTaskManagerUITests;
+			productReference = 92795AF91D2D189900440599 /* DMDownloadTaskManagerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		92795ACF1D2D189900440599 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = xialuyao;
+				TargetAttributes = {
+					92795AD61D2D189900440599 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					92795AED1D2D189900440599 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 92795AD61D2D189900440599;
+					};
+					92795AF81D2D189900440599 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 92795AD61D2D189900440599;
+					};
+				};
+			};
+			buildConfigurationList = 92795AD21D2D189900440599 /* Build configuration list for PBXProject "DMDownloadTaskManager" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 92795ACE1D2D189900440599;
+			productRefGroup = 92795AD81D2D189900440599 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				92795AD61D2D189900440599 /* DMDownloadTaskManager */,
+				92795AED1D2D189900440599 /* DMDownloadTaskManagerTests */,
+				92795AF81D2D189900440599 /* DMDownloadTaskManagerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		92795AD51D2D189900440599 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92795AE81D2D189900440599 /* LaunchScreen.storyboard in Resources */,
+				92795AE51D2D189900440599 /* Assets.xcassets in Resources */,
+				92795AE01D2D189900440599 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92795AEC1D2D189900440599 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92795AF71D2D189900440599 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		92795AD31D2D189900440599 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92795B1E1D2D238600440599 /* TaskListTableViewController.swift in Sources */,
+				92795B1B1D2D22C400440599 /* ViewController.swift in Sources */,
+				92795B191D2D1DE500440599 /* DownloadTaskDataManager.swift in Sources */,
+				92795ADB1D2D189900440599 /* AppDelegate.swift in Sources */,
+				92795AE31D2D189900440599 /* DMDownloadTaskManager.xcdatamodeld in Sources */,
+				92795B171D2D1A1000440599 /* DownloadTaskEntity.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92795AEA1D2D189900440599 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92795AF31D2D189900440599 /* DMDownloadTaskManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92795AF51D2D189900440599 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92795AFE1D2D189900440599 /* DMDownloadTaskManagerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		92795AF01D2D189900440599 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 92795AD61D2D189900440599 /* DMDownloadTaskManager */;
+			targetProxy = 92795AEF1D2D189900440599 /* PBXContainerItemProxy */;
+		};
+		92795AFB1D2D189900440599 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 92795AD61D2D189900440599 /* DMDownloadTaskManager */;
+			targetProxy = 92795AFA1D2D189900440599 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		92795ADE1D2D189900440599 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				92795ADF1D2D189900440599 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		92795AE61D2D189900440599 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				92795AE71D2D189900440599 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		92795B001D2D189900440599 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		92795B011D2D189900440599 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		92795B031D2D189900440599 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DMDownloadTaskManager/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xunlei.xialuyao.DMDownloadTaskManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		92795B041D2D189900440599 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DMDownloadTaskManager/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xunlei.xialuyao.DMDownloadTaskManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		92795B061D2D189900440599 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DMDownloadTaskManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xunlei.xialuyao.DMDownloadTaskManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DMDownloadTaskManager.app/DMDownloadTaskManager";
+			};
+			name = Debug;
+		};
+		92795B071D2D189900440599 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DMDownloadTaskManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xunlei.xialuyao.DMDownloadTaskManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DMDownloadTaskManager.app/DMDownloadTaskManager";
+			};
+			name = Release;
+		};
+		92795B091D2D189900440599 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DMDownloadTaskManagerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xunlei.xialuyao.DMDownloadTaskManagerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = DMDownloadTaskManager;
+			};
+			name = Debug;
+		};
+		92795B0A1D2D189900440599 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DMDownloadTaskManagerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xunlei.xialuyao.DMDownloadTaskManagerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = DMDownloadTaskManager;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		92795AD21D2D189900440599 /* Build configuration list for PBXProject "DMDownloadTaskManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92795B001D2D189900440599 /* Debug */,
+				92795B011D2D189900440599 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		92795B021D2D189900440599 /* Build configuration list for PBXNativeTarget "DMDownloadTaskManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92795B031D2D189900440599 /* Debug */,
+				92795B041D2D189900440599 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		92795B051D2D189900440599 /* Build configuration list for PBXNativeTarget "DMDownloadTaskManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92795B061D2D189900440599 /* Debug */,
+				92795B071D2D189900440599 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		92795B081D2D189900440599 /* Build configuration list for PBXNativeTarget "DMDownloadTaskManagerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92795B091D2D189900440599 /* Debug */,
+				92795B0A1D2D189900440599 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		92795AE11D2D189900440599 /* DMDownloadTaskManager.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				92795AE21D2D189900440599 /* DMDownloadTaskManager.xcdatamodel */,
+			);
+			currentVersion = 92795AE21D2D189900440599 /* DMDownloadTaskManager.xcdatamodel */;
+			path = DMDownloadTaskManager.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 92795ACF1D2D189900440599 /* Project object */;
+}
