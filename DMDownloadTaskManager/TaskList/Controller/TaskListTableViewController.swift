@@ -11,20 +11,26 @@ private let cellIdentifier = "testCell"
 
 class TaskListTableViewController: UITableViewController {
 
-    var tasksData = DownloadTaskDataManager()
-    
+    let tasksDataManager = DownloadTaskDataManager.shareInstance
     
     func createTestData() -> Void {
-        
         var titleStr = "test1"
         var urlStr = "test://1"
-        var tags = ["123", "456"]
-        self.tasksData.addTask(titleStr, url: urlStr, tagsArr: tags)
+        var des = "测试案例1"
+//        var tags = ["123", "456"]
+        var task = DownloadTaskEntity(title: titleStr, url: urlStr, description: des)
+        self.tasksDataManager.addTask(task)
         
         titleStr = "test2"
         urlStr = "test//2"
-        tags = ["123", "456"]
-        self.tasksData.addTask(titleStr, url: urlStr, tagsArr: tags)
+        des = "测试案例2"
+//        tags = ["123", "456"]
+        task = DownloadTaskEntity(title: titleStr, url: urlStr, description: des)
+        self.tasksDataManager.addTask(task)
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -47,7 +53,8 @@ class TaskListTableViewController: UITableViewController {
     }
 
     func createTask() -> Void {
-        
+        let createVC = ModifyTaskViewController()
+        self.navigationController?.pushViewController(createVC, animated: true)
     }
     // MARK: - Table view data source
 
@@ -56,20 +63,20 @@ class TaskListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.tasksData.taskCount()
+        return self.tasksDataManager.taskCount()
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
 
-        cell.textLabel?.text = self.tasksData.taskOfIndex(indexPath.row)?.title
+        cell.textLabel?.text = self.tasksDataManager.taskOfIndex(indexPath.row)?.title
 
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let taskData = self.tasksData.taskOfIndex(indexPath.row)
+        let taskData = self.tasksDataManager.taskOfIndex(indexPath.row)
         let taskVC = TaskDetailViewController(taskData: taskData!)
         self.navigationController?.pushViewController(taskVC, animated: true)
     }

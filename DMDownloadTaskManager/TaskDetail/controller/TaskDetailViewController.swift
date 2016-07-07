@@ -14,9 +14,9 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
 
     @IBOutlet weak var urlLabel: UILabel!
     @IBOutlet weak var tagsTableView: UITableView!
+    @IBOutlet weak var descriptionText : UITextView!
     
-    
-    var taskDetailData : DownloadTaskEntity?
+    var taskDetailData : DownloadTaskEntity!
     
     ///------------------坑爹的初始化--------------------start
     required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -36,18 +36,31 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         self.tagsTableView.delegate = self
         self.tagsTableView.dataSource = self
         
-        self.urlLabel.text = self.taskDetailData?.url
         
         self.edgesForExtendedLayout = UIRectEdge.None
-        // Do any additional setup after loading the view.
-        self.navigationItem.title = self.taskDetailData?.title
         
         self.tagsTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: taskTagCellIdentifier)
+        
+        let changeBtn = UIBarButtonItem.init(title: "修改", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(TaskDetailViewController.changeTask))
+        self.navigationItem.rightBarButtonItem = changeBtn
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.urlLabel.text = self.taskDetailData?.url
+        self.navigationItem.title = self.taskDetailData?.title
+        self.descriptionText.text = self.taskDetailData?.description
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func changeTask(){
+        let viewController = ModifyTaskViewController(taskData: self.taskDetailData)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

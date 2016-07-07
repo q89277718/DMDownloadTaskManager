@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskDetailViewController" customModule="DMDownloadTaskManager" customModuleProvider="target">
             <connections>
+                <outlet property="descriptionText" destination="o8J-cD-fwg" id="9Yt-n9-tyu"/>
                 <outlet property="tagsTableView" destination="EwK-bR-odT" id="fNZ-0m-66F"/>
                 <outlet property="urlLabel" destination="1iX-Av-5IF" id="hCs-PM-b6Q"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -24,20 +25,33 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EwK-bR-odT">
-                    <rect key="frame" x="0.0" y="61" width="600" height="539"/>
+                    <rect key="frame" x="0.0" y="196" width="600" height="404"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="o8J-cD-fwg">
+                    <rect key="frame" x="0.0" y="56" width="600" height="120"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="Tm6-bQ-RFG"/>
+                    </constraints>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="EwK-bR-odT" secondAttribute="bottom" id="0Xv-6W-8iB"/>
                 <constraint firstAttribute="trailing" secondItem="EwK-bR-odT" secondAttribute="trailing" id="41Q-Ea-3yz"/>
-                <constraint firstItem="EwK-bR-odT" firstAttribute="top" secondItem="1iX-Av-5IF" secondAttribute="bottom" constant="20" id="DVI-M1-w2j"/>
                 <constraint firstItem="1iX-Av-5IF" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="DaD-1s-w7t"/>
                 <constraint firstItem="1iX-Av-5IF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="FDl-dK-7mG"/>
+                <constraint firstItem="o8J-cD-fwg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ObJ-CY-rb0"/>
                 <constraint firstItem="1iX-Av-5IF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="XJm-5v-KqT"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1iX-Av-5IF" secondAttribute="trailing" constant="20" id="ZOL-lf-J7J"/>
+                <constraint firstItem="o8J-cD-fwg" firstAttribute="top" secondItem="1iX-Av-5IF" secondAttribute="bottom" constant="15" id="Zff-pW-p4R"/>
                 <constraint firstItem="EwK-bR-odT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="e5k-qX-3up"/>
+                <constraint firstAttribute="trailing" secondItem="o8J-cD-fwg" secondAttribute="trailing" id="jE0-s4-w49"/>
+                <constraint firstItem="EwK-bR-odT" firstAttribute="top" secondItem="o8J-cD-fwg" secondAttribute="bottom" constant="20" id="uBa-hE-BIP"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
         </view>

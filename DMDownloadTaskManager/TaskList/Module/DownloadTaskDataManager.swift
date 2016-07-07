@@ -8,24 +8,21 @@
 
 import UIKit
 
-class DownloadTaskDataManager : NSObject {
+class DownloadTaskDataManager{
     
     var taskData = Array<DownloadTaskEntity>()
-    
-    func shareInstance() -> DownloadTaskDataManager {
-        struct Static {
-            static var onceToken : dispatch_once_t = 0
-            static var instance : DownloadTaskDataManager? = nil
-        }
-        dispatch_once(&Static.onceToken) {
-            Static.instance = DownloadTaskDataManager()
-        }
-        return Static.instance!
+    //提供静态访问方法
+    class var shareInstance: DownloadTaskDataManager {
+        return Inner.instance
     }
     
-    func addTask(title:String, url:String, tagsArr:Array<String>) -> Bool {
-        let taskEntity = DownloadTaskEntity(title:title, url: url, tagsArr: tagsArr)
-        self.taskData .append(taskEntity)
+    //通过结构体来保存实例引用
+    private struct Inner {
+        private static let instance = DownloadTaskDataManager()
+    }
+    
+    func addTask(task:DownloadTaskEntity) -> Bool {
+        self.taskData.append(task)
         return true
     }
     

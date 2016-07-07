@@ -20,8 +20,8 @@
 		92795B1E1D2D238600440599 /* TaskListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92795B1D1D2D238600440599 /* TaskListTableViewController.swift */; };
 		92795B221D2D3D5F00440599 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92795B201D2D3D5F00440599 /* TaskDetailViewController.swift */; };
 		92795B231D2D3D5F00440599 /* TaskDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92795B211D2D3D5F00440599 /* TaskDetailViewController.xib */; };
-		92795B2C1D2E03AB00440599 /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92795B2A1D2E03AB00440599 /* CreateTaskViewController.swift */; };
-		92795B2D1D2E03AB00440599 /* CreateTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92795B2B1D2E03AB00440599 /* CreateTaskViewController.xib */; };
+		92795B2C1D2E03AB00440599 /* ModifyTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92795B2A1D2E03AB00440599 /* ModifyTaskViewController.swift */; };
+		92795B2D1D2E03AB00440599 /* ModifyTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92795B2B1D2E03AB00440599 /* ModifyTaskViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,8 +61,9 @@
 		92795B1D1D2D238600440599 /* TaskListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskListTableViewController.swift; path = TaskList/Controller/TaskListTableViewController.swift; sourceTree = "<group>"; };
 		92795B201D2D3D5F00440599 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskDetailViewController.swift; path = TaskDetail/controller/TaskDetailViewController.swift; sourceTree = "<group>"; };
 		92795B211D2D3D5F00440599 /* TaskDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TaskDetailViewController.xib; path = TaskDetail/controller/TaskDetailViewController.xib; sourceTree = "<group>"; };
-		92795B2A1D2E03AB00440599 /* CreateTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateTaskViewController.swift; path = CreateTask/CreateTaskViewController.swift; sourceTree = "<group>"; };
-		92795B2B1D2E03AB00440599 /* CreateTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateTaskViewController.xib; path = CreateTask/CreateTaskViewController.xib; sourceTree = "<group>"; };
+		92795B2A1D2E03AB00440599 /* ModifyTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModifyTaskViewController.swift; path = CreateTask/ModifyTaskViewController.swift; sourceTree = "<group>"; };
+		92795B2B1D2E03AB00440599 /* ModifyTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ModifyTaskViewController.xib; path = CreateTask/ModifyTaskViewController.xib; sourceTree = "<group>"; };
+		92795B301D2E3C8400440599 /* DownloadTaskManagerDef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadTaskManagerDef.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,16 +114,15 @@
 		92795AD91D2D189900440599 /* DMDownloadTaskManager */ = {
 			isa = PBXGroup;
 			children = (
+				92795B311D2E3C9B00440599 /* Support */,
 				92795B0E1D2D18F100440599 /* TaskList */,
-				92795B0D1D2D18EB00440599 /* CreateTask */,
+				92795B0D1D2D18EB00440599 /* ModifyTask */,
 				92795B0B1D2D18DC00440599 /* TaskDetail */,
 				92795ADA1D2D189900440599 /* AppDelegate.swift */,
 				92795B1A1D2D22C400440599 /* ViewController.swift */,
 				92795ADE1D2D189900440599 /* Main.storyboard */,
-				92795AE41D2D189900440599 /* Assets.xcassets */,
 				92795AE61D2D189900440599 /* LaunchScreen.storyboard */,
-				92795AE91D2D189900440599 /* Info.plist */,
-				92795AE11D2D189900440599 /* DMDownloadTaskManager.xcdatamodeld */,
+				92795B301D2E3C8400440599 /* DownloadTaskManagerDef.h */,
 			);
 			path = DMDownloadTaskManager;
 			sourceTree = "<group>";
@@ -153,13 +153,13 @@
 			name = TaskDetail;
 			sourceTree = "<group>";
 		};
-		92795B0D1D2D18EB00440599 /* CreateTask */ = {
+		92795B0D1D2D18EB00440599 /* ModifyTask */ = {
 			isa = PBXGroup;
 			children = (
-				92795B2A1D2E03AB00440599 /* CreateTaskViewController.swift */,
-				92795B2B1D2E03AB00440599 /* CreateTaskViewController.xib */,
+				92795B2A1D2E03AB00440599 /* ModifyTaskViewController.swift */,
+				92795B2B1D2E03AB00440599 /* ModifyTaskViewController.xib */,
 			);
-			name = CreateTask;
+			name = ModifyTask;
 			sourceTree = "<group>";
 		};
 		92795B0E1D2D18F100440599 /* TaskList */ = {
@@ -211,6 +211,16 @@
 				92795B211D2D3D5F00440599 /* TaskDetailViewController.xib */,
 			);
 			name = controller;
+			sourceTree = "<group>";
+		};
+		92795B311D2E3C9B00440599 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				92795AE91D2D189900440599 /* Info.plist */,
+				92795AE41D2D189900440599 /* Assets.xcassets */,
+				92795AE11D2D189900440599 /* DMDownloadTaskManager.xcdatamodeld */,
+			);
+			name = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,7 +330,7 @@
 				92795AE81D2D189900440599 /* LaunchScreen.storyboard in Resources */,
 				92795AE51D2D189900440599 /* Assets.xcassets in Resources */,
 				92795B231D2D3D5F00440599 /* TaskDetailViewController.xib in Resources */,
-				92795B2D1D2E03AB00440599 /* CreateTaskViewController.xib in Resources */,
+				92795B2D1D2E03AB00440599 /* ModifyTaskViewController.xib in Resources */,
 				92795AE01D2D189900440599 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,7 +363,7 @@
 				92795ADB1D2D189900440599 /* AppDelegate.swift in Sources */,
 				92795AE31D2D189900440599 /* DMDownloadTaskManager.xcdatamodeld in Sources */,
 				92795B171D2D1A1000440599 /* DownloadTaskEntity.swift in Sources */,
-				92795B2C1D2E03AB00440599 /* CreateTaskViewController.swift in Sources */,
+				92795B2C1D2E03AB00440599 /* ModifyTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
