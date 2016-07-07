@@ -18,6 +18,10 @@
 		92795B191D2D1DE500440599 /* DownloadTaskDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92795B181D2D1DE500440599 /* DownloadTaskDataManager.swift */; };
 		92795B1B1D2D22C400440599 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92795B1A1D2D22C400440599 /* ViewController.swift */; };
 		92795B1E1D2D238600440599 /* TaskListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92795B1D1D2D238600440599 /* TaskListTableViewController.swift */; };
+		92795B221D2D3D5F00440599 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92795B201D2D3D5F00440599 /* TaskDetailViewController.swift */; };
+		92795B231D2D3D5F00440599 /* TaskDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92795B211D2D3D5F00440599 /* TaskDetailViewController.xib */; };
+		92795B2C1D2E03AB00440599 /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92795B2A1D2E03AB00440599 /* CreateTaskViewController.swift */; };
+		92795B2D1D2E03AB00440599 /* CreateTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92795B2B1D2E03AB00440599 /* CreateTaskViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,10 @@
 		92795B181D2D1DE500440599 /* DownloadTaskDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadTaskDataManager.swift; path = TaskList/Module/DownloadTaskDataManager.swift; sourceTree = "<group>"; };
 		92795B1A1D2D22C400440599 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		92795B1D1D2D238600440599 /* TaskListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskListTableViewController.swift; path = TaskList/Controller/TaskListTableViewController.swift; sourceTree = "<group>"; };
+		92795B201D2D3D5F00440599 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskDetailViewController.swift; path = TaskDetail/controller/TaskDetailViewController.swift; sourceTree = "<group>"; };
+		92795B211D2D3D5F00440599 /* TaskDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TaskDetailViewController.xib; path = TaskDetail/controller/TaskDetailViewController.xib; sourceTree = "<group>"; };
+		92795B2A1D2E03AB00440599 /* CreateTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateTaskViewController.swift; path = CreateTask/CreateTaskViewController.swift; sourceTree = "<group>"; };
+		92795B2B1D2E03AB00440599 /* CreateTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateTaskViewController.xib; path = CreateTask/CreateTaskViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +148,7 @@
 		92795B0B1D2D18DC00440599 /* TaskDetail */ = {
 			isa = PBXGroup;
 			children = (
+				92795B1F1D2D3D2B00440599 /* controller */,
 			);
 			name = TaskDetail;
 			sourceTree = "<group>";
@@ -147,6 +156,8 @@
 		92795B0D1D2D18EB00440599 /* CreateTask */ = {
 			isa = PBXGroup;
 			children = (
+				92795B2A1D2E03AB00440599 /* CreateTaskViewController.swift */,
+				92795B2B1D2E03AB00440599 /* CreateTaskViewController.xib */,
 			);
 			name = CreateTask;
 			sourceTree = "<group>";
@@ -156,7 +167,6 @@
 			children = (
 				92795B121D2D192A00440599 /* support */,
 				92795B111D2D191A00440599 /* Controller */,
-				92795B101D2D191700440599 /* View */,
 				92795B0F1D2D190E00440599 /* Module */,
 			);
 			name = TaskList;
@@ -169,13 +179,6 @@
 				92795B181D2D1DE500440599 /* DownloadTaskDataManager.swift */,
 			);
 			name = Module;
-			sourceTree = "<group>";
-		};
-		92795B101D2D191700440599 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = View;
 			sourceTree = "<group>";
 		};
 		92795B111D2D191A00440599 /* Controller */ = {
@@ -199,6 +202,15 @@
 				92795B161D2D1A1000440599 /* DownloadTaskEntity.swift */,
 			);
 			name = Entity;
+			sourceTree = "<group>";
+		};
+		92795B1F1D2D3D2B00440599 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				92795B201D2D3D5F00440599 /* TaskDetailViewController.swift */,
+				92795B211D2D3D5F00440599 /* TaskDetailViewController.xib */,
+			);
+			name = controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +319,8 @@
 			files = (
 				92795AE81D2D189900440599 /* LaunchScreen.storyboard in Resources */,
 				92795AE51D2D189900440599 /* Assets.xcassets in Resources */,
+				92795B231D2D3D5F00440599 /* TaskDetailViewController.xib in Resources */,
+				92795B2D1D2E03AB00440599 /* CreateTaskViewController.xib in Resources */,
 				92795AE01D2D189900440599 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,12 +346,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92795B221D2D3D5F00440599 /* TaskDetailViewController.swift in Sources */,
 				92795B1E1D2D238600440599 /* TaskListTableViewController.swift in Sources */,
 				92795B1B1D2D22C400440599 /* ViewController.swift in Sources */,
 				92795B191D2D1DE500440599 /* DownloadTaskDataManager.swift in Sources */,
 				92795ADB1D2D189900440599 /* AppDelegate.swift in Sources */,
 				92795AE31D2D189900440599 /* DMDownloadTaskManager.xcdatamodeld in Sources */,
 				92795B171D2D1A1000440599 /* DownloadTaskEntity.swift in Sources */,
+				92795B2C1D2E03AB00440599 /* CreateTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +501,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xunlei.xialuyao.DMDownloadTaskManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -496,6 +513,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xunlei.xialuyao.DMDownloadTaskManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -564,6 +582,7 @@
 				92795B041D2D189900440599 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92795B051D2D189900440599 /* Build configuration list for PBXNativeTarget "DMDownloadTaskManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -572,6 +591,7 @@
 				92795B071D2D189900440599 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92795B081D2D189900440599 /* Build configuration list for PBXNativeTarget "DMDownloadTaskManagerUITests" */ = {
 			isa = XCConfigurationList;
@@ -580,6 +600,7 @@
 				92795B0A1D2D189900440599 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

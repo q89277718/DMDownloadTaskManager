@@ -16,13 +16,15 @@ class TaskListTableViewController: UITableViewController {
     
     func createTestData() -> Void {
         
-        var url = "test1"
+        var titleStr = "test1"
+        var urlStr = "test://1"
         var tags = ["123", "456"]
-        self.tasksData.addTask(url, tagsArr: tags)
+        self.tasksData.addTask(titleStr, url: urlStr, tagsArr: tags)
         
-        url = "test2"
+        titleStr = "test2"
+        urlStr = "test//2"
         tags = ["123", "456"]
-        self.tasksData.addTask(url, tagsArr: tags)
+        self.tasksData.addTask(titleStr, url: urlStr, tagsArr: tags)
     }
     
     override func viewDidLoad() {
@@ -35,6 +37,8 @@ class TaskListTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.createTestData()
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        let creatBtn = UIBarButtonItem.init(title: "+", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(TaskListTableViewController.createTask))
+        self.navigationItem.rightBarButtonItem = creatBtn
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,6 +46,9 @@ class TaskListTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func createTask() -> Void {
+        
+    }
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -56,11 +63,16 @@ class TaskListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
 
-        cell.textLabel?.text = self.tasksData.taskOfIndex(indexPath.row)?.url
+        cell.textLabel?.text = self.tasksData.taskOfIndex(indexPath.row)?.title
 
         return cell
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let taskData = self.tasksData.taskOfIndex(indexPath.row)
+        let taskVC = TaskDetailViewController(taskData: taskData!)
+        self.navigationController?.pushViewController(taskVC, animated: true)
+    }
 
     /*
     // Override to support conditional editing of the table view.

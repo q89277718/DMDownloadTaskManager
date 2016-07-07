@@ -23,8 +23,8 @@ class DownloadTaskDataManager : NSObject {
         return Static.instance!
     }
     
-    func addTask(url:String, tagsArr:Array<String>) -> Bool {
-        let taskEntity = DownloadTaskEntity(url: url, tagsArr: tagsArr)
+    func addTask(title:String, url:String, tagsArr:Array<String>) -> Bool {
+        let taskEntity = DownloadTaskEntity(title:title, url: url, tagsArr: tagsArr)
         self.taskData .append(taskEntity)
         return true
     }

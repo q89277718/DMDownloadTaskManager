@@ -10,6 +10,7 @@ import UIKit
 
 class DownloadTaskEntity {
 
+    var title : String?
     var tagsArr = Array<String>()
     var url : String?
     
@@ -29,7 +30,8 @@ class DownloadTaskEntity {
         return false
     }
     
-    init(url:String, tagsArr:Array<String>){
+    init(title:String, url:String, tagsArr:Array<String>){
+        self.title = title
         self.url = url
         self.tagsArr = tagsArr
     }
