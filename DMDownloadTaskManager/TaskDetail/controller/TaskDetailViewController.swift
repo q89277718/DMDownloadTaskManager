@@ -15,6 +15,7 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var urlLabel: UILabel!
     @IBOutlet weak var tagsTableView: UITableView!
     @IBOutlet weak var descriptionText : UITextView!
+    @IBOutlet weak var tipLabel: UILabel!
     
     var taskDetailData : DownloadTaskEntity!
     
@@ -51,6 +52,7 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         self.urlLabel.text = self.taskDetailData?.url
         self.navigationItem.title = self.taskDetailData?.title
         self.descriptionText.text = self.taskDetailData?.description
+        self.tipLabel.hidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,6 +75,16 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell
     }
     
+    @IBAction func OnUrlClick(sender: AnyObject) {
+        let pasteBoard = UIPasteboard.generalPasteboard()
+        pasteBoard.string = self.urlLabel.text
+        self.tipLabel.hidden = false
+        weak var weakSelf = self
+        let popTime = dispatch_time(DISPATCH_TIME_NOW, (Int64)(1 * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue()) {
+            weakSelf?.tipLabel.hidden = true
+        }
+    }
     /*
     // MARK: - Navigation
 
