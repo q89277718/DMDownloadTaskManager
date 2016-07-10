@@ -21,6 +21,10 @@ class DownloadTaskDataManager{
         private static let instance = DownloadTaskDataManager()
     }
     
+    init() {
+        self.unarchiveData()
+    }
+    
     func addTask(task:DownloadTaskEntity) -> Bool {
         self.taskData.append(task)
         return true
@@ -35,5 +39,31 @@ class DownloadTaskDataManager{
             return self.taskData[index]
         }
         return nil
+    }
+    
+    func saveTasks() -> Bool {
+        self.archiveData()
+        return true
+    }
+    
+    func archiveData(){
+        let path: AnyObject=NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0]
+        let filePath=path.stringByAppendingPathComponent("task_records.archive")
+        //归档
+        let array = NSArray.init(array: self.taskData)
+        if(NSKeyedArchiver.archiveRootObject(array, toFile: filePath)){
+            NSLog("Archive Success")
+        }
+    }
+    func unarchiveData(){
+        let path: AnyObject=NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0]
+        let filePath=path.stringByAppendingPathComponent("task_records.archive")
+        //反归档
+        let data=NSKeyedUnarchiver.unarchiveObjectWithFile(filePath) as? Array<DownloadTaskEntity>
+        if data == nil {
+            self.taskData = []
+        } else {
+            self.taskData = data!
+        }
     }
 }

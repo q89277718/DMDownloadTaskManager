@@ -51,7 +51,7 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         self.urlLabel.text = self.taskDetailData?.url
         self.navigationItem.title = self.taskDetailData?.title
-        self.descriptionText.text = self.taskDetailData?.description
+        self.descriptionText.text = self.taskDetailData?.descriptionStr
         self.tipLabel.hidden = true
     }
 

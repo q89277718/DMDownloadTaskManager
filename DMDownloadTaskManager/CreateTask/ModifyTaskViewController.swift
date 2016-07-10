@@ -30,7 +30,7 @@ class ModifyTaskViewController: UIViewController {
         if self.taskData != nil {
             self.titleInput.text = self.taskData!.title
             self.urlInput.text = self.taskData!.url
-            self.descriptionInput.text = self.taskData!.description
+            self.descriptionInput.text = self.taskData!.descriptionStr
         }
     }
     
@@ -49,12 +49,14 @@ class ModifyTaskViewController: UIViewController {
             alertView.show()
         } else {
             if self.taskData == nil {
-                let task = DownloadTaskEntity(title: self.titleInput.text, url: self.urlInput.text, description: self.descriptionInput.text, tagsArr: [])
+                let task = DownloadTaskEntity(title: self.titleInput.text, url: self.urlInput.text, description: self.descriptionInput.text)
                 self.taskManger.addTask(task)
+                DownloadTaskDataManager.shareInstance.saveTasks()
             } else {
                 self.taskData!.title = self.titleInput.text
                 self.taskData!.url = self.urlInput.text
-                self.taskData!.description = self.descriptionInput.text
+                self.taskData!.descriptionStr = self.descriptionInput.text
+                DownloadTaskDataManager.shareInstance.saveTasks()
             }
             self.navigationController?.popViewControllerAnimated(true)
         }
