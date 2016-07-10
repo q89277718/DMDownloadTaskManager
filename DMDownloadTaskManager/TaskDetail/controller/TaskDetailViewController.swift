@@ -66,12 +66,12 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.taskDetailData!.tagsArr.count
+        return self.taskDetailData?.tagsArr?.count ?? 0;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tagsTableView.dequeueReusableCellWithIdentifier(taskTagCellIdentifier, forIndexPath: indexPath)
-        cell.textLabel?.text = self.taskDetailData!.tagsArr[indexPath.row]
+        cell.textLabel?.text = self.taskDetailData!.tagsArr![indexPath.row]
         return cell
     }
     
