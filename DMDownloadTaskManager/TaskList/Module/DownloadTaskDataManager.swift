@@ -38,6 +38,15 @@ class DownloadTaskDataManager{
         return nil
     }
     
+    func removeTaskOfIndex(index:Int) -> Bool {
+        if (index >= 0 && index < self.taskData.count) {
+            self.taskData.removeAtIndex(index)
+            self.saveTasks()
+            return true
+        }
+        return false
+    }
+    
     func saveTasks() -> Bool {
         self.archiveData()
         return true
