@@ -107,5 +107,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        if url.scheme == "downloadTaskDrop" {
+            let data = url.path
+            let arr = data?.componentsSeparatedByString("+++")
+            DownloadTaskDataManager.shareInstance.handleStringArray(arr)
+            return true
+        }
+        return false
+    }
 }
 

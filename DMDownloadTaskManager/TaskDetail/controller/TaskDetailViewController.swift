@@ -85,6 +85,39 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             weakSelf?.tipLabel.hidden = true
         }
     }
+    
+    @IBAction func OnPreBtnClick(sender: AnyObject) {
+        
+    }
+    
+    @IBAction func OnShareBtnClick(sender: AnyObject) {
+        let controller = UIActivityViewController(activityItems: [self.makeShareUrl()], applicationActivities: nil)
+        
+        // Exclude all activities except AirDrop.
+        let excludedActivities = [UIActivityTypePostToTwitter, UIActivityTypePostToFacebook,
+        UIActivityTypePostToWeibo,
+        UIActivityTypeMessage, UIActivityTypeMail,
+        UIActivityTypePrint, UIActivityTypeCopyToPasteboard,
+        UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll,
+        UIActivityTypeAddToReadingList, UIActivityTypePostToFlickr,
+        UIActivityTypePostToVimeo, UIActivityTypePostToTencentWeibo];
+        controller.excludedActivityTypes = excludedActivities;
+        
+        // Present the controller
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    @IBAction func OnDeleteBtnClick(sender: AnyObject) {
+        
+    }
+    @IBAction func OnNxtBtnClick(sender: AnyObject) {
+        
+    }
+    
+    func makeShareUrl() -> NSURL {
+        let tempStr = String(format: "downloadTaskDrop://%@ +++ %@ +++ %@", self.taskDetailData.title ?? "", self.taskDetailData.url ?? "", self.taskDetailData.descriptionStr ?? "")
+        return NSURL.init(fileURLWithPath: tempStr)
+    }
     /*
     // MARK: - Navigation
 

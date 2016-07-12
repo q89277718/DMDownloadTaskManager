@@ -50,8 +50,13 @@ class DownloadTaskEntity :NSObject, NSCoding {
         return false
     }
     
-    init(title:String?, url:String?){
+    init(title:String?){
         self.title = title
+    }
+    
+    
+    convenience init(title:String?, url:String?){
+        self.init(title:title)
         self.url = url
     }
     

@@ -6,22 +6,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DMDownloadTaskManager/TaskList/Module/DownloadTaskDataManager.swift"
-            timestampString = "489858750.340167"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "unarchiveData()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -41,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DMDownloadTaskManager/TaskList/Module/DownloadTaskDataManager.swift"
-            timestampString = "489859285.525978"
+            filePath = "DMDownloadTaskManager/AppDelegate.swift"
+            timestampString = "490019592.009546"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "taskOfIndex(_:)"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "application(_:handleOpenURL:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

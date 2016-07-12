@@ -73,4 +73,24 @@ class DownloadTaskDataManager{
             self.taskData = data!
         }
     }
+    
+    func handleStringArray(stringArray:Array<String>?) -> Bool {
+        if stringArray == nil {
+            return false
+        }
+        let tempArr = stringArray!
+        if tempArr.count == 0  {
+            return false
+        }
+        let entity = DownloadTaskEntity(title: tempArr[0])
+        if tempArr.count > 1 {
+            entity.url = tempArr[1]
+        }
+        
+        if tempArr.count > 2 {
+            entity.descriptionStr = tempArr[2]
+        }
+        self.addTask(entity)
+        return true
+    }
 }
