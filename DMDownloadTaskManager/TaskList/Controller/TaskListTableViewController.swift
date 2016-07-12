@@ -39,8 +39,21 @@ class TaskListTableViewController: UITableViewController {
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         let creatBtn = UIBarButtonItem.init(title: "+", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(TaskListTableViewController.createTask))
         self.navigationItem.rightBarButtonItem = creatBtn
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(NSNotification.DownloadTaskDataDidChangeNotification,
+                                                                object: nil, queue: NSOperationQueue.mainQueue())
+        {
+            (notification:NSNotification) in
+            if notification.name == NSNotification.DownloadTaskDataDidChangeNotification{
+                self.tableView.reloadData()
+            }
+        }
     }
 
+    deinit{
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

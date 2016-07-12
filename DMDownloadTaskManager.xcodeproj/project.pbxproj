@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		920CA0261D35207600BFD730 /* MyNotification+DownloadTaskNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920CA0251D35207600BFD730 /* MyNotification+DownloadTaskNotification.swift */; };
 		92795ADB1D2D189900440599 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92795ADA1D2D189900440599 /* AppDelegate.swift */; };
 		92795AE01D2D189900440599 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92795ADE1D2D189900440599 /* Main.storyboard */; };
 		92795AE31D2D189900440599 /* DMDownloadTaskManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 92795AE11D2D189900440599 /* DMDownloadTaskManager.xcdatamodeld */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		920CA0251D35207600BFD730 /* MyNotification+DownloadTaskNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MyNotification+DownloadTaskNotification.swift"; path = "Notification/MyNotification+DownloadTaskNotification.swift"; sourceTree = "<group>"; };
 		92795AD71D2D189900440599 /* DMDownloadTaskManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DMDownloadTaskManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92795ADA1D2D189900440599 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92795ADF1D2D189900440599 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,6 +93,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		920CA0231D351F2900BFD730 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				920CA0251D35207600BFD730 /* MyNotification+DownloadTaskNotification.swift */,
+			);
+			name = Notification;
+			sourceTree = "<group>";
+		};
 		92795ACE1D2D189900440599 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +124,7 @@
 		92795AD91D2D189900440599 /* DMDownloadTaskManager */ = {
 			isa = PBXGroup;
 			children = (
+				920CA0231D351F2900BFD730 /* Notification */,
 				92795B311D2E3C9B00440599 /* Support */,
 				92795B0E1D2D18F100440599 /* TaskList */,
 				92795B0D1D2D18EB00440599 /* ModifyTask */,
@@ -356,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				920CA0261D35207600BFD730 /* MyNotification+DownloadTaskNotification.swift in Sources */,
 				92795B221D2D3D5F00440599 /* TaskDetailViewController.swift in Sources */,
 				92795B1E1D2D238600440599 /* TaskListTableViewController.swift in Sources */,
 				92795B1B1D2D22C400440599 /* ViewController.swift in Sources */,

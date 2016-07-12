@@ -91,6 +91,7 @@ class DownloadTaskDataManager{
             entity.descriptionStr = tempArr[2]
         }
         self.addTask(entity)
+        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: NSNotification.DownloadTaskDataDidChangeNotification, object: nil))
         return true
     }
 }
