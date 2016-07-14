@@ -10,12 +10,14 @@ import UIKit
 
 class DownloadTaskEntity :NSObject, NSCoding {
 
+    var id : Int!
     var title : String?
     var tagsArr : Array<String>?
     var url : String?
     var descriptionStr : String?
     
     func encodeWithCoder(aCoder: NSCoder){
+        aCoder.encodeInt64(Int64(self.id), forKey: "id")
         aCoder.encodeObject(self.title, forKey: "title")
         aCoder.encodeObject(self.url, forKey: "url")
         aCoder.encodeObject(self.descriptionStr, forKey: "descriptionStr")
@@ -24,6 +26,7 @@ class DownloadTaskEntity :NSObject, NSCoding {
     
     required init(coder aDecoder: NSCoder) {
         super.init()
+        self.id = aDecoder.decodeObjectForKey("id") as? Int ?? -1
         self.title = aDecoder.decodeObjectForKey("title") as? String
         self.url = aDecoder.decodeObjectForKey("url") as? String
         self.descriptionStr = aDecoder.decodeObjectForKey("descriptionStr") as? String
@@ -51,9 +54,9 @@ class DownloadTaskEntity :NSObject, NSCoding {
     }
     
     init(title:String?){
+        self.id = -1
         self.title = title
     }
-    
     
     convenience init(title:String?, url:String?){
         self.init(title:title)

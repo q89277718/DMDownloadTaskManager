@@ -10,7 +10,13 @@ import UIKit
 
 class DownloadTaskDataManager{
     
+    enum taskDataLoadState {
+        case Unload,loaded
+    }
+    
     var taskData = Array<DownloadTaskEntity>()
+    var maxTaskId : Int!
+    var taskDataState: taskDataLoadState
     
     private static let _instance = DownloadTaskDataManager()
     
@@ -19,16 +25,42 @@ class DownloadTaskDataManager{
     }
     
     init() {
-        self.unarchiveData()
+        self.taskDataState = .Unload
+        self.loadTasksFromLocal()
+        self.maxTaskId = NSUserDefaults.standardUserDefaults().integerForKey("taskMaxId") ?? 0
     }
     
     func addTask(task:DownloadTaskEntity) -> Bool {
+        if task.id == -1 {
+            task.id = self.maxTaskId + 1
+            self.maxTaskId = self.maxTaskId + 1
+            NSUserDefaults.standardUserDefaults().setInteger(self.maxTaskId, forKey: "taskMaxId")
+        }
         self.taskData.append(task)
         return true
     }
     
     func taskCount() -> Int {
         return self.taskData.count
+    }
+    
+    func taskOfId(id:Int!) -> DownloadTaskEntity? {
+        for task in self.taskData {
+            if task.id == id {
+                return task
+            }
+        }
+        return nil
+    }
+    
+    func removeTaskOfId(id:Int!) -> Bool {
+        for index in 0 ... (self.taskData.count - 1){
+            if self.taskData[index].id == id {
+                self.taskData.removeAtIndex(index)
+                return true
+            }
+        }
+        return false
     }
     
     func taskOfIndex(index:Int) -> DownloadTaskEntity? {
@@ -41,19 +73,13 @@ class DownloadTaskDataManager{
     func removeTaskOfIndex(index:Int) -> Bool {
         if (index >= 0 && index < self.taskData.count) {
             self.taskData.removeAtIndex(index)
-            self.saveTasks()
+            self.saveTasksToLocal()
             return true
         }
         return false
     }
     
-    func saveTasks() -> Bool {
-        self.archiveData()
-        return true
-    }
-    
-    func archiveData(){
-        
+    func saveTasksToLocal() {
         let path: AnyObject=NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0]
         let filePath=path.stringByAppendingPathComponent("task_records.archive")
         //归档
@@ -62,7 +88,8 @@ class DownloadTaskDataManager{
             NSLog("Archive Success")
         }
     }
-    func unarchiveData(){
+    
+    func loadTasksFromLocal() {
         let path: AnyObject=NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0]
         let filePath=path.stringByAppendingPathComponent("task_records.archive")
         //反归档
@@ -73,7 +100,7 @@ class DownloadTaskDataManager{
             self.taskData = data!
         }
     }
-    
+
     func handleStringArray(stringArray:Array<String>?) -> Bool {
         if stringArray == nil {
             return false
@@ -82,7 +109,14 @@ class DownloadTaskDataManager{
         if tempArr.count == 0  {
             return false
         }
-        let entity = DownloadTaskEntity(title: tempArr[0])
+        var tempStr = tempArr[0]
+        if tempStr.characters.count == 0 {
+            return false
+        }
+        if tempStr.hasPrefix("/") {
+            tempStr = tempStr.substringFromIndex(tempStr.startIndex.advancedBy(1))
+        }
+        let entity = DownloadTaskEntity(title: tempStr)
         if tempArr.count > 1 {
             entity.url = tempArr[1]
         }

@@ -8,8 +8,10 @@
 
 import UIKit
 
+let DownloadTaskDataDidChangeNotification_ = "DownloadTaskDataDidChangeNotification"
+
 extension NSNotification {
     class var DownloadTaskDataDidChangeNotification:String{
-        return "DownloadTaskDataDidChangeNotification"
+        return DownloadTaskDataDidChangeNotification_
     }
 }

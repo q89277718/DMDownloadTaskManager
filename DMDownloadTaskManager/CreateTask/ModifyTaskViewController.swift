@@ -57,12 +57,12 @@ class ModifyTaskViewController: UIViewController {
             if self.taskData == nil {
                 let task = DownloadTaskEntity(title: self.titleInput.text, url: self.urlInput.text, description: self.descriptionInput.text)
                 self.taskManger.addTask(task)
-                DownloadTaskDataManager.shareInstance.saveTasks()
+                DownloadTaskDataManager.shareInstance.saveTasksToLocal()
             } else {
                 self.taskData!.title = self.titleInput.text
                 self.taskData!.url = self.urlInput.text
                 self.taskData!.descriptionStr = self.descriptionInput.text
-                DownloadTaskDataManager.shareInstance.saveTasks()
+                DownloadTaskDataManager.shareInstance.saveTasksToLocal()
             }
             self.navigationController?.popViewControllerAnimated(true)
         }
