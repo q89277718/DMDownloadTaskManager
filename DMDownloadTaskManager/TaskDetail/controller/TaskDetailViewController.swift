@@ -44,6 +44,10 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let changeBtn = UIBarButtonItem.init(title: "修改", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(TaskDetailViewController.changeTask))
         self.navigationItem.rightBarButtonItem = changeBtn
+        
+        let backItem = UIBarButtonItem.init()
+        backItem.title = "Back"
+        self.navigationItem.backBarButtonItem = backItem;
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -108,7 +112,13 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func OnDeleteBtnClick(sender: AnyObject) {
-        
+        let alertVC = UIAlertController.init(title: "提示", message: "是否删除任务", preferredStyle:.Alert)
+        alertVC.addAction(UIAlertAction.init(title: "确定", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) in
+            DownloadTaskDataManager.shareInstance.removeTaskOfId(self.taskDetailData.id)
+            self.navigationController?.popViewControllerAnimated(true)
+        }))
+        alertVC.addAction(UIAlertAction.init(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil))
+        self.navigationController?.presentViewController(alertVC, animated: true, completion: nil)
     }
     @IBAction func OnNxtBtnClick(sender: AnyObject) {
         

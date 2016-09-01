@@ -40,13 +40,9 @@ class ModifyTaskViewController: UIViewController {
     
     func saveTask(){
         if self.titleInput.text == "" && self.urlInput.text == ""{
-            let alertView = UIAlertView()
-            alertView.title = "错误提示"
-            alertView.message = "标题和url不能为同时空"
-            alertView.addButtonWithTitle("确定")
-            alertView.cancelButtonIndex = 0
-            alertView.delegate=self
-            alertView.show()
+            let alertVC = UIAlertController.init(title: "错误提示", message: "标题和url不能为同时空", preferredStyle:.Alert)
+            alertVC.addAction(UIAlertAction.init(title: "确定", style: UIAlertActionStyle.Default, handler: nil))
+            self.navigationController?.presentViewController(alertVC, animated: true, completion: nil)
         } else {
             if self.titleInput.text == "" {
                 self.titleInput.text = self.urlInput.text
@@ -57,7 +53,6 @@ class ModifyTaskViewController: UIViewController {
             if self.taskData == nil {
                 let task = DownloadTaskEntity(title: self.titleInput.text, url: self.urlInput.text, description: self.descriptionInput.text)
                 self.taskManger.addTask(task)
-                DownloadTaskDataManager.shareInstance.saveTasksToLocal()
             } else {
                 self.taskData!.title = self.titleInput.text
                 self.taskData!.url = self.urlInput.text

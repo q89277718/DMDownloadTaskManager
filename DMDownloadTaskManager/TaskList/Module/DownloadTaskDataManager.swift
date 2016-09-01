@@ -37,6 +37,7 @@ class DownloadTaskDataManager{
             NSUserDefaults.standardUserDefaults().setInteger(self.maxTaskId, forKey: "taskMaxId")
         }
         self.taskData.append(task)
+        self.saveTasksToLocal()
         return true
     }
     
@@ -57,6 +58,7 @@ class DownloadTaskDataManager{
         for index in 0 ... (self.taskData.count - 1){
             if self.taskData[index].id == id {
                 self.taskData.removeAtIndex(index)
+                self.saveTasksToLocal()
                 return true
             }
         }

@@ -48,6 +48,11 @@ class TaskListTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         }
+        self.title = "首页"
+        
+        let backItem = UIBarButtonItem.init()
+        backItem.title = "Back"
+        self.navigationItem.backBarButtonItem = backItem;
     }
 
     deinit{
@@ -100,8 +105,13 @@ class TaskListTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            self.tasksDataManager.removeTaskOfIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            let alertVC = UIAlertController.init(title: "提示", message: "是否删除任务", preferredStyle:.Alert)
+            alertVC.addAction(UIAlertAction.init(title: "确定", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) in
+                self.tasksDataManager.removeTaskOfIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }))
+            alertVC.addAction(UIAlertAction.init(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.navigationController?.presentViewController(alertVC, animated: true, completion: nil)
         }
     }
  
