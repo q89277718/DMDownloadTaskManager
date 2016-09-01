@@ -109,9 +109,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
         if url.scheme == "downloadTaskDrop" {
-            let data = url.path
-            let arr = data?.componentsSeparatedByString("+++")
-            DownloadTaskDataManager.shareInstance.handleStringArray(arr)
+            if let entity = DownloadTaskEntity.init(shareUrl: url) {
+                DownloadTaskDataManager.shareInstance.addTask(entity)
+                NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: NSNotification.DownloadTaskDataDidChangeNotification, object: nil))
+            }
             return true
         }
         return false

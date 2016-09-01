@@ -72,4 +72,40 @@ class DownloadTaskEntity :NSObject, NSCoding {
         self.init(title:title, url: url, description: description)
         self.tagsArr = tagsArr
     }
+    
+    init?(shareUrl:NSURL) {
+        let data = shareUrl.path
+        let stringArray = data?.componentsSeparatedByString("#")
+        if stringArray == nil {
+            return nil
+        }
+        let tempArr = stringArray!
+        if tempArr.count == 0  {
+            return nil
+        }
+        var tempStr = tempArr[0]
+        if tempStr.characters.count == 0 {
+            return nil
+        }
+        if tempStr.hasPrefix("/") {
+            tempStr = tempStr.substringFromIndex(tempStr.startIndex.advancedBy(1))
+        }
+        self.title = tempStr.urlDecode()
+        self.id = -1;
+        if tempArr.count > 1 {
+            self.url = tempArr[1].urlDecode()
+        }
+        
+        if tempArr.count > 2 {
+            self.descriptionStr = tempArr[2].urlDecode()
+        }
+    }
+    
+    func shareUrl() -> NSURL {
+        let title = (self.title != nil) ? self.title!.urlEncode() : ""
+        let url = self.url != nil ? self.url!.urlEncode() : ""
+        let des = self.descriptionStr != nil ? self.descriptionStr!.urlEncode() : ""
+        let tempStr = String(format: "downloadTaskDrop://%@#%@#%@", title!, url!, des!)
+        return NSURL.init(fileURLWithPath: tempStr)
+    }
 }

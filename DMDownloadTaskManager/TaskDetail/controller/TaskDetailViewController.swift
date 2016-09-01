@@ -91,7 +91,7 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func OnShareBtnClick(sender: AnyObject) {
-        let controller = UIActivityViewController(activityItems: [self.makeShareUrl()], applicationActivities: nil)
+        let controller = UIActivityViewController(activityItems: [self.taskDetailData.shareUrl()], applicationActivities: nil)
         
         // Exclude all activities except AirDrop.
         let excludedActivities = [UIActivityTypePostToTwitter, UIActivityTypePostToFacebook,
@@ -112,11 +112,6 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     @IBAction func OnNxtBtnClick(sender: AnyObject) {
         
-    }
-    
-    func makeShareUrl() -> NSURL {
-        let tempStr = String(format: "downloadTaskDrop://%@ +++ %@ +++ %@", self.taskDetailData.title ?? "", self.taskDetailData.url ?? "", self.taskDetailData.descriptionStr ?? "")
-        return NSURL.init(fileURLWithPath: tempStr)
     }
     /*
     // MARK: - Navigation
