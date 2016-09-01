@@ -24,6 +24,7 @@
 		92795B231D2D3D5F00440599 /* TaskDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92795B211D2D3D5F00440599 /* TaskDetailViewController.xib */; };
 		92795B2C1D2E03AB00440599 /* ModifyTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92795B2A1D2E03AB00440599 /* ModifyTaskViewController.swift */; };
 		92795B2D1D2E03AB00440599 /* ModifyTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92795B2B1D2E03AB00440599 /* ModifyTaskViewController.xib */; };
+		928FC1151D785115001CC9EA /* UIViewController+Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928FC1141D785115001CC9EA /* UIViewController+Animator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		92795B2A1D2E03AB00440599 /* ModifyTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModifyTaskViewController.swift; path = CreateTask/ModifyTaskViewController.swift; sourceTree = "<group>"; };
 		92795B2B1D2E03AB00440599 /* ModifyTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ModifyTaskViewController.xib; path = CreateTask/ModifyTaskViewController.xib; sourceTree = "<group>"; };
 		92795B301D2E3C8400440599 /* DownloadTaskManagerDef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadTaskManagerDef.h; sourceTree = "<group>"; };
+		928FC1141D785115001CC9EA /* UIViewController+Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Animator.swift"; path = "CommonKits/UIKit/UIViewController+Animator.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +108,8 @@
 		9275E59B1D7808710028E8AA /* CommonKit */ = {
 			isa = PBXGroup;
 			children = (
-				9275E59C1D7808AE0028E8AA /* String+URL.swift */,
+				928FC1131D7850B4001CC9EA /* UIKit */,
+				928FC1121D7850A9001CC9EA /* Foundation */,
 			);
 			name = CommonKit;
 			sourceTree = "<group>";
@@ -243,6 +246,22 @@
 				92795AE11D2D189900440599 /* DMDownloadTaskManager.xcdatamodeld */,
 			);
 			name = Support;
+			sourceTree = "<group>";
+		};
+		928FC1121D7850A9001CC9EA /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				9275E59C1D7808AE0028E8AA /* String+URL.swift */,
+			);
+			name = Foundation;
+			sourceTree = "<group>";
+		};
+		928FC1131D7850B4001CC9EA /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				928FC1141D785115001CC9EA /* UIViewController+Animator.swift */,
+			);
+			name = UIKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,6 +406,7 @@
 				92795ADB1D2D189900440599 /* AppDelegate.swift in Sources */,
 				92795AE31D2D189900440599 /* DMDownloadTaskManager.xcdatamodeld in Sources */,
 				92795B171D2D1A1000440599 /* DownloadTaskEntity.swift in Sources */,
+				928FC1151D785115001CC9EA /* UIViewController+Animator.swift in Sources */,
 				92795B2C1D2E03AB00440599 /* ModifyTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

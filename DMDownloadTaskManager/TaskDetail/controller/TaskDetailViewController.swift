@@ -18,7 +18,7 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var tipLabel: UILabel!
     
     var taskDetailData : DownloadTaskEntity!
-    
+
     ///------------------坑爹的初始化--------------------start
     required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -118,7 +118,18 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             self.navigationController?.popViewControllerAnimated(true)
         }))
         alertVC.addAction(UIAlertAction.init(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil))
-        self.navigationController?.presentViewController(alertVC, animated: true, completion: nil)
+        
+        
+        alertVC.view.alpha = 0.0;
+        self.navigationController?.presentViewController(alertVC, animated: false, completion: nil)
+        
+        UIView.animateWithDuration(0.25) {
+            alertVC.view.alpha = 1.0
+        }
+        alertVC.view.center = CGPointMake(self.view.center.x, 0.0)
+        let snapBehaviour = UISnapBehavior.init(item: alertVC.view, snapToPoint: self.view.window!.center)
+        snapBehaviour.damping = CGFloat.init(NSNumber.init(int: rand() % 100)) / 200.0 + 0.5
+        self.animator.addBehavior(snapBehaviour)
     }
     @IBAction func OnNxtBtnClick(sender: AnyObject) {
         
