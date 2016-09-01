@@ -117,5 +117,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return false
     }
+    
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        if url.scheme == "downloadTaskDrop" {
+            if let entity = DownloadTaskEntity.init(shareUrl: url) {
+                DownloadTaskDataManager.shareInstance.addTask(entity)
+                NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: NSNotification.DownloadTaskDataDidChangeNotification, object: nil))
+            }
+            return true
+        }
+        return false
+    }
 }
 
