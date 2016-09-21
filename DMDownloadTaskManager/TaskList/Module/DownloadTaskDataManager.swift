@@ -27,14 +27,14 @@ class DownloadTaskDataManager{
     init() {
         self.taskDataState = .Unload
         self.loadTasksFromLocal()
-        self.maxTaskId = NSUserDefaults.standardUserDefaults().integerForKey("taskMaxId") ?? 0
+        self.maxTaskId = UserDefaults.standard.integer(forKey: "taskMaxId") 
     }
     
-    func addTask(task:DownloadTaskEntity) -> Bool {
+    func add(task:DownloadTaskEntity) -> Bool {
         if task.id == -1 {
             task.id = self.maxTaskId + 1
             self.maxTaskId = self.maxTaskId + 1
-            NSUserDefaults.standardUserDefaults().setInteger(self.maxTaskId, forKey: "taskMaxId")
+            UserDefaults.standard.set(self.maxTaskId, forKey: "taskMaxId")
         }
         self.taskData.append(task)
         self.saveTasksToLocal()
@@ -57,7 +57,7 @@ class DownloadTaskDataManager{
     func removeTaskOfId(id:Int!) -> Bool {
         for index in 0 ... (self.taskData.count - 1){
             if self.taskData[index].id == id {
-                self.taskData.removeAtIndex(index)
+                self.taskData.remove(at: index)
                 self.saveTasksToLocal()
                 return true
             }
@@ -74,7 +74,7 @@ class DownloadTaskDataManager{
     
     func removeTaskOfIndex(index:Int) -> Bool {
         if (index >= 0 && index < self.taskData.count) {
-            self.taskData.removeAtIndex(index)
+            self.taskData.remove(at: index)
             self.saveTasksToLocal()
             return true
         }
@@ -82,20 +82,20 @@ class DownloadTaskDataManager{
     }
     
     func saveTasksToLocal() {
-        let path: AnyObject=NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0]
-        let filePath=path.stringByAppendingPathComponent("task_records.archive")
+        var path=NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        path.append("task_records.archive")
         //归档
         let array = NSArray.init(array: self.taskData)
-        if(NSKeyedArchiver.archiveRootObject(array, toFile: filePath)){
+        if(NSKeyedArchiver.archiveRootObject(array, toFile: path)){
             NSLog("Archive Success")
         }
     }
     
     func loadTasksFromLocal() {
-        let path: AnyObject=NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0]
-        let filePath=path.stringByAppendingPathComponent("task_records.archive")
+        var path=NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
+        path.append("task_records.archive")
         //反归档
-        let data=NSKeyedUnarchiver.unarchiveObjectWithFile(filePath) as? Array<DownloadTaskEntity>
+        let data=NSKeyedUnarchiver.unarchiveObject(withFile: path) as? Array<DownloadTaskEntity>
         if data == nil {
             self.taskData = []
         } else {

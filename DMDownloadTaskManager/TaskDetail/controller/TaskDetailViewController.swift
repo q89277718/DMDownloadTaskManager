@@ -20,11 +20,11 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     var taskDetailData : DownloadTaskEntity!
 
     ///------------------坑爹的初始化--------------------start
-    required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     convenience init(taskData:DownloadTaskEntity){
-        self.init(nibName: "TaskDetailViewController", bundle: NSBundle.mainBundle());
+        self.init(nibName: "TaskDetailViewController", bundle: Bundle.main);
         self.taskDetailData = taskData
     }
     required init?(coder aDecoder: NSCoder) {
@@ -38,11 +38,11 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         self.tagsTableView.dataSource = self
         
         
-        self.edgesForExtendedLayout = UIRectEdge.None
+        self.edgesForExtendedLayout = []
         
-        self.tagsTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: taskTagCellIdentifier)
+        self.tagsTableView.register(UITableViewCell.self, forCellReuseIdentifier: taskTagCellIdentifier)
         
-        let changeBtn = UIBarButtonItem.init(title: "修改", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(TaskDetailViewController.changeTask))
+        let changeBtn = UIBarButtonItem.init(title: "修改", style: UIBarButtonItemStyle.plain, target: self, action: #selector(TaskDetailViewController.changeTask))
         self.navigationItem.rightBarButtonItem = changeBtn
         
         let backItem = UIBarButtonItem.init()
@@ -50,13 +50,13 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         self.navigationItem.backBarButtonItem = backItem;
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.urlLabel.text = self.taskDetailData?.url
         self.navigationItem.title = self.taskDetailData?.title
         self.descriptionText.text = self.taskDetailData?.descriptionStr
-        self.tipLabel.hidden = true
+        self.tipLabel.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,24 +69,24 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.taskDetailData?.tagsArr?.count ?? 0;
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tagsTableView.dequeueReusableCellWithIdentifier(taskTagCellIdentifier, forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tagsTableView.dequeueReusableCell(withIdentifier: taskTagCellIdentifier, for: indexPath)
         cell.textLabel?.text = self.taskDetailData!.tagsArr![indexPath.row]
         return cell
     }
     
     @IBAction func OnUrlClick(sender: AnyObject) {
-        let pasteBoard = UIPasteboard.generalPasteboard()
+        let pasteBoard = UIPasteboard.general
         pasteBoard.string = self.urlLabel.text
-        self.tipLabel.hidden = false
+        self.tipLabel.isHidden = false
         weak var weakSelf = self
-        let popTime = dispatch_time(DISPATCH_TIME_NOW, (Int64)(1 * NSEC_PER_SEC));
-        dispatch_after(popTime, dispatch_get_main_queue()) {
-            weakSelf?.tipLabel.hidden = true
+        let popTime = DispatchTime.now() + .seconds(1);
+        DispatchQueue.main.asyncAfter(deadline: popTime) {
+            weakSelf?.tipLabel.isHidden = true
         }
     }
     
@@ -98,37 +98,38 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         let controller = UIActivityViewController(activityItems: [self.taskDetailData.shareUrl()], applicationActivities: nil)
         
         // Exclude all activities except AirDrop.
-        let excludedActivities = [UIActivityTypePostToTwitter, UIActivityTypePostToFacebook,
-        UIActivityTypePostToWeibo,
-        UIActivityTypeMessage, UIActivityTypeMail,
-        UIActivityTypePrint, UIActivityTypeCopyToPasteboard,
-        UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll,
-        UIActivityTypeAddToReadingList, UIActivityTypePostToFlickr,
-        UIActivityTypePostToVimeo, UIActivityTypePostToTencentWeibo];
+        let excludedActivities = [UIActivityType.postToTwitter, UIActivityType.postToFacebook,
+        UIActivityType.postToWeibo,
+        UIActivityType.message, UIActivityType.mail,
+        UIActivityType.print, UIActivityType.copyToPasteboard,
+        UIActivityType.assignToContact, UIActivityType.saveToCameraRoll,
+        UIActivityType.addToReadingList, UIActivityType.postToFlickr,
+        UIActivityType.postToVimeo, UIActivityType.postToTencentWeibo];
         controller.excludedActivityTypes = excludedActivities;
         
         // Present the controller
-        self.presentViewController(controller, animated: true, completion: nil)
+        self.present(controller, animated: true, completion: nil)
     }
     
     @IBAction func OnDeleteBtnClick(sender: AnyObject) {
-        let alertVC = UIAlertController.init(title: "提示", message: "是否删除任务", preferredStyle:.Alert)
-        alertVC.addAction(UIAlertAction.init(title: "确定", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) in
-            DownloadTaskDataManager.shareInstance.removeTaskOfId(self.taskDetailData.id)
-            self.navigationController?.popViewControllerAnimated(true)
+        let alertVC = UIAlertController.init(title: "提示", message: "是否删除任务", preferredStyle:.alert)
+        alertVC.addAction(UIAlertAction.init(title: "确定", style: UIAlertActionStyle.default, handler: { (UIAlertAction) in
+            if(DownloadTaskDataManager.shareInstance.removeTaskOfId(id: self.taskDetailData.id)){
+                self.navigationController!.popViewController(animated: true)
+            }
         }))
-        alertVC.addAction(UIAlertAction.init(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil))
+        alertVC.addAction(UIAlertAction.init(title: "取消", style: UIAlertActionStyle.cancel, handler: nil))
         
         
         alertVC.view.alpha = 0.0;
-        self.navigationController?.presentViewController(alertVC, animated: false, completion: nil)
+        self.navigationController?.present(alertVC, animated: false, completion: nil)
         
-        UIView.animateWithDuration(0.25) {
+        UIView.animate(withDuration: 0.25) {
             alertVC.view.alpha = 1.0
         }
-        alertVC.view.center = CGPointMake(self.view.center.x, 0.0)
-        let snapBehaviour = UISnapBehavior.init(item: alertVC.view, snapToPoint: self.view.window!.center)
-        snapBehaviour.damping = CGFloat.init(NSNumber.init(int: rand() % 100)) / 200.0 + 0.5
+        alertVC.view.center = CGPoint.init(x: self.view.center.x, y: 0.0);
+        let snapBehaviour = UISnapBehavior.init(item: alertVC.view, snapTo: self.view.window!.center)
+        snapBehaviour.damping = CGFloat.init(NSNumber.init(value: arc4random() % 100)) / 200.0 + 0.5
         self.animator.addBehavior(snapBehaviour)
     }
     @IBAction func OnNxtBtnClick(sender: AnyObject) {

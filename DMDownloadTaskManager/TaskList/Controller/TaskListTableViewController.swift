@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 private let cellIdentifier = "testCell"
 
 class TaskListTableViewController: UITableViewController {
@@ -19,16 +20,16 @@ class TaskListTableViewController: UITableViewController {
         var des = "测试案例1"
 //        var tags = ["123", "456"]
         var task = DownloadTaskEntity(title: titleStr, url: urlStr, description: des)
-        self.tasksDataManager.addTask(task)
+        if(self.tasksDataManager.add(task: task)){}
         
         titleStr = "test2"
         urlStr = "test//2"
         des = "测试案例2"
 //        tags = ["123", "456"]
         task = DownloadTaskEntity(title: titleStr, url: urlStr, description: des)
-        self.tasksDataManager.addTask(task)
+        if(self.tasksDataManager.add(task: task)){}
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
     }
@@ -36,27 +37,26 @@ class TaskListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.createTestData()
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-        let creatBtn = UIBarButtonItem.init(title: "+", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(TaskListTableViewController.createTask))
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        let creatBtn = UIBarButtonItem.init(title: "+", style: UIBarButtonItemStyle.plain, target: self, action: #selector(TaskListTableViewController.createTask))
         self.navigationItem.rightBarButtonItem = creatBtn
         
-        NSNotificationCenter.defaultCenter().addObserverForName(NSNotification.DownloadTaskDataDidChangeNotification,
-                                                                object: nil, queue: NSOperationQueue.mainQueue())
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: Notification.DownloadTaskDataDidChangeNotification),
+                                                                object: nil, queue: OperationQueue.main)
         {
-            (notification:NSNotification) in
-            if notification.name == NSNotification.DownloadTaskDataDidChangeNotification{
-                self.tableView.reloadData()
-            }
+            (notification:Notification) in
+            self.tableView.reloadData()
         }
         self.title = "首页"
         
         let backItem = UIBarButtonItem.init()
         backItem.title = "Back"
         self.navigationItem.backBarButtonItem = backItem;
+        
     }
 
     deinit{
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -70,48 +70,49 @@ class TaskListTableViewController: UITableViewController {
     }
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tasksDataManager.taskCount()
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
 
-        let entity = self.tasksDataManager.taskOfIndex(indexPath.row)
+        let entity = self.tasksDataManager.taskOfIndex(index: indexPath.row)
         
         cell.textLabel?.text = entity!.title
 
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let taskData = self.tasksDataManager.taskOfIndex(indexPath.row)
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let taskData = self.tasksDataManager.taskOfIndex(index: indexPath.row)
         let taskVC = TaskDetailViewController(taskData: taskData!)
         self.navigationController?.pushViewController(taskVC, animated: true)
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        return .Delete
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            let alertVC = UIAlertController.init(title: "提示", message: "是否删除任务", preferredStyle:.Alert)
-            alertVC.addAction(UIAlertAction.init(title: "确定", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) in
-                self.tasksDataManager.removeTaskOfIndex(indexPath.row)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let alertVC = UIAlertController.init(title: "提示", message: "是否删除任务", preferredStyle:.alert)
+            alertVC.addAction(UIAlertAction.init(title: "确定", style: UIAlertActionStyle.default, handler: { (UIAlertAction) in
+                if(self.tasksDataManager.removeTaskOfIndex(index: indexPath.row)){
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                }
             }))
-            alertVC.addAction(UIAlertAction.init(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil))
-            self.navigationController?.presentViewController(alertVC, animated: true, completion: nil)
+            alertVC.addAction(UIAlertAction.init(title: "取消", style: UIAlertActionStyle.cancel, handler: nil))
+            self.navigationController?.present(alertVC, animated: true, completion: nil)
         }
     }
  

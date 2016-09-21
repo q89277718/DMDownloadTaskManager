@@ -16,21 +16,21 @@ class DownloadTaskEntity :NSObject, NSCoding {
     var url : String?
     var descriptionStr : String?
     
-    func encodeWithCoder(aCoder: NSCoder){
-        aCoder.encodeInt64(Int64(self.id), forKey: "id")
-        aCoder.encodeObject(self.title, forKey: "title")
-        aCoder.encodeObject(self.url, forKey: "url")
-        aCoder.encodeObject(self.descriptionStr, forKey: "descriptionStr")
-        aCoder.encodeObject(self.tagsArr, forKey: "tagsArr")
+    func encode(with aCoder: NSCoder){
+        aCoder.encode(Int64(self.id), forKey: "id")
+        aCoder.encode(self.title, forKey: "title")
+        aCoder.encode(self.url, forKey: "url")
+        aCoder.encode(self.descriptionStr, forKey: "descriptionStr")
+        aCoder.encode(self.tagsArr, forKey: "tagsArr")
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init()
-        self.id = aDecoder.decodeObjectForKey("id") as? Int ?? -1
-        self.title = aDecoder.decodeObjectForKey("title") as? String
-        self.url = aDecoder.decodeObjectForKey("url") as? String
-        self.descriptionStr = aDecoder.decodeObjectForKey("descriptionStr") as? String
-        self.tagsArr = aDecoder.decodeObjectForKey("descriptionStr") as? Array<String>
+        self.id = aDecoder.decodeObject(forKey: "id") as? Int ?? -1
+        self.title = aDecoder.decodeObject(forKey: "title") as? String
+        self.url = aDecoder.decodeObject(forKey: "url") as? String
+        self.descriptionStr = aDecoder.decodeObject(forKey: "descriptionStr") as? String
+        self.tagsArr = aDecoder.decodeObject(forKey: "descriptionStr") as? Array<String>
     }
 
     func addTag(tagStr : String) -> Bool {
@@ -46,8 +46,8 @@ class DownloadTaskEntity :NSObject, NSCoding {
     }
     
     func removeTag(targStr : String) -> Bool {
-        if let index = self.tagsArr?.indexOf(targStr) {
-            self.tagsArr!.removeAtIndex(index)
+        if let index = self.tagsArr?.index(of: targStr) {
+            self.tagsArr!.remove(at: index)
             return true
         }
         return false
@@ -73,13 +73,13 @@ class DownloadTaskEntity :NSObject, NSCoding {
         self.tagsArr = tagsArr
     }
     
-    init?(shareUrl:NSURL) {
+    init?(shareUrl:URL) {
         let data = shareUrl.path
-        let stringArray = data?.componentsSeparatedByString("#")
-        if stringArray == nil {
+        if data.characters.count == 0 {
             return nil
         }
-        let tempArr = stringArray!
+        let stringArray = data.components(separatedBy: "#")
+        let tempArr = stringArray
         if tempArr.count == 0  {
             return nil
         }
@@ -88,7 +88,7 @@ class DownloadTaskEntity :NSObject, NSCoding {
             return nil
         }
         if tempStr.hasPrefix("/") {
-            tempStr = tempStr.substringFromIndex(tempStr.startIndex.advancedBy(1))
+            tempStr = tempStr.substring(from: tempStr.index(tempStr.startIndex, offsetBy: 1))
         }
         self.title = tempStr.urlDecode()
         self.id = -1;

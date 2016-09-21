@@ -10,20 +10,20 @@ import UIKit
 
 extension String {
     func urlEncode() -> String? {
-        return self.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())
+        return self.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlHostAllowed)
     }
     
     func urlDecode() -> String? {
-        return self.stringByRemovingPercentEncoding
+        return self.removingPercentEncoding
     }
     
     func base64Encode() -> String? {
-        let utf8str = self.dataUsingEncoding(NSUTF8StringEncoding)
-        return utf8str!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
+        let utf8str = self.data(using: String.Encoding.utf8)
+        return utf8str!.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
     }
     
     func base64Decode() -> String? {
-        let data = NSData(base64EncodedString: self, options: NSDataBase64DecodingOptions(rawValue: 0))
-        return String(data: data!, encoding: NSUTF8StringEncoding)
+        let data = NSData(base64Encoded: self, options: NSData.Base64DecodingOptions(rawValue: 0))
+        return String(data: data! as Data, encoding: String.Encoding.utf8)
     }
 }

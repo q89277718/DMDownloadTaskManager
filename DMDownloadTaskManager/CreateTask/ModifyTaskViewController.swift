@@ -22,9 +22,9 @@ class ModifyTaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.edgesForExtendedLayout = UIRectEdge.None
+        self.edgesForExtendedLayout = []
         
-        let saveBtn = UIBarButtonItem.init(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ModifyTaskViewController.saveTask))
+        let saveBtn = UIBarButtonItem.init(title: "保存", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ModifyTaskViewController.saveTask))
         self.navigationItem.rightBarButtonItem = saveBtn
         
         if self.taskData != nil {
@@ -40,9 +40,9 @@ class ModifyTaskViewController: UIViewController {
     
     func saveTask(){
         if self.titleInput.text == "" && self.urlInput.text == ""{
-            let alertVC = UIAlertController.init(title: "错误提示", message: "标题和url不能为同时空", preferredStyle:.Alert)
-            alertVC.addAction(UIAlertAction.init(title: "确定", style: UIAlertActionStyle.Default, handler: nil))
-            self.navigationController?.presentViewController(alertVC, animated: true, completion: nil)
+            let alertVC = UIAlertController.init(title: "错误提示", message: "标题和url不能为同时空", preferredStyle:.alert)
+            alertVC.addAction(UIAlertAction.init(title: "确定", style: UIAlertActionStyle.default, handler: nil))
+            self.navigationController?.present(alertVC, animated: true, completion: nil)
         } else {
             if self.titleInput.text == "" {
                 self.titleInput.text = self.urlInput.text
@@ -52,22 +52,24 @@ class ModifyTaskViewController: UIViewController {
             
             if self.taskData == nil {
                 let task = DownloadTaskEntity(title: self.titleInput.text, url: self.urlInput.text, description: self.descriptionInput.text)
-                self.taskManger.addTask(task)
+                if(self.taskManger.add(task: task)){
+                    
+                }
             } else {
                 self.taskData!.title = self.titleInput.text
                 self.taskData!.url = self.urlInput.text
                 self.taskData!.descriptionStr = self.descriptionInput.text
                 DownloadTaskDataManager.shareInstance.saveTasksToLocal()
             }
-            self.navigationController?.popViewControllerAnimated(true)
+            self.navigationController!.popViewController(animated: true)
         }
     }
     
-    required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     convenience init(taskData:DownloadTaskEntity){
-        self.init(nibName: "ModifyTaskViewController", bundle: NSBundle.mainBundle());
+        self.init(nibName: "ModifyTaskViewController", bundle: Bundle.main);
         self.taskData = taskData
     }
     required init?(coder aDecoder: NSCoder) {

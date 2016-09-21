@@ -10,8 +10,8 @@ import UIKit
 
 let DownloadTaskDataDidChangeNotification_ = "DownloadTaskDataDidChangeNotification"
 
-extension NSNotification {
-    class var DownloadTaskDataDidChangeNotification:String{
+extension Notification {
+    static var DownloadTaskDataDidChangeNotification:String{
         return DownloadTaskDataDidChangeNotification_
     }
 }
