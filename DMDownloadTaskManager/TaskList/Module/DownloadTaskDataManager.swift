@@ -83,7 +83,7 @@ class DownloadTaskDataManager{
     
     func saveTasksToLocal() {
         var path=NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-        path.append("task_records.archive")
+        path.append("/task_records.archive")
         //归档
         let array = NSArray.init(array: self.taskData)
         if(NSKeyedArchiver.archiveRootObject(array, toFile: path)){
@@ -93,7 +93,7 @@ class DownloadTaskDataManager{
     
     func loadTasksFromLocal() {
         var path=NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
-        path.append("task_records.archive")
+        path.append("/task_records.archive")
         //反归档
         let data=NSKeyedUnarchiver.unarchiveObject(withFile: path) as? Array<DownloadTaskEntity>
         if data == nil {

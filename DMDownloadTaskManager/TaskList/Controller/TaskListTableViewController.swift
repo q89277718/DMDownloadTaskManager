@@ -89,7 +89,7 @@ class TaskListTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let taskData = self.tasksDataManager.taskOfIndex(index: indexPath.row)
         let taskVC = TaskDetailViewController(taskData: taskData!)
         self.navigationController?.pushViewController(taskVC, animated: true)

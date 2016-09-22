@@ -1,0 +1,12 @@
+target 'DMDownloadTaskManager' do
+    
+    platform :ios, '7.0'
+
+    inhibit_all_warnings!
+#    use_frameworks!
+
+    #source 'https://github.com/CocoaPods/Specs.git'
+    source 'git@10.10.164.249:thundermobile_ios/cocoapodsspecsclone.git'
+    pod ‘ReactiveCocoa’
+
+end
