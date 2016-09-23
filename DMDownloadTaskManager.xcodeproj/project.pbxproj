@@ -55,25 +55,18 @@ fi
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>64700543F69EED9D3C5A5942</key>
+		<key>56443632FBA320BFF681253C</key>
 		<dict>
 			<key>explicitFileType</key>
-			<string>archive.ar</string>
+			<string>wrapper.framework</string>
 			<key>includeInIndex</key>
 			<string>0</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>path</key>
-			<string>libPods-DMDownloadTaskManager.a</string>
+			<string>Pods_DMDownloadTaskManager.framework</string>
 			<key>sourceTree</key>
 			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>73325D253AA985A6300BAF98</key>
-		<dict>
-			<key>fileRef</key>
-			<string>64700543F69EED9D3C5A5942</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
 		</dict>
 		<key>920CA0231D351F2900BFD730</key>
 		<dict>
@@ -282,7 +275,7 @@ fi
 			<string>2147483647</string>
 			<key>files</key>
 			<array>
-				<string>73325D253AA985A6300BAF98</string>
+				<string>C439B1E21C27A21CCF0053B3</string>
 			</array>
 			<key>isa</key>
 			<string>PBXFrameworksBuildPhase</string>
@@ -1626,11 +1619,18 @@ fi
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>C439B1E21C27A21CCF0053B3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>56443632FBA320BFF681253C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>D6F2FFD6683149C5EC0F9825</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>64700543F69EED9D3C5A5942</string>
+				<string>56443632FBA320BFF681253C</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>

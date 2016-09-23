@@ -79,7 +79,7 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell
     }
     
-    @IBAction func OnUrlClick(sender: AnyObject) {
+    @IBAction func OnUrlClick(_ sender: AnyObject) {
         let pasteBoard = UIPasteboard.general
         pasteBoard.string = self.urlLabel.text
         self.tipLabel.isHidden = false
@@ -90,11 +90,11 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    @IBAction func OnPreBtnClick(sender: AnyObject) {
+    @IBAction func OnPreBtnClick(_ sender: AnyObject) {
         
     }
     
-    @IBAction func OnShareBtnClick(sender: AnyObject) {
+    @IBAction func OnShareBtnClick(_ sender: AnyObject) {
         let controller = UIActivityViewController(activityItems: [self.taskDetailData.shareUrl()], applicationActivities: nil)
         
         // Exclude all activities except AirDrop.
@@ -111,7 +111,7 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         self.present(controller, animated: true, completion: nil)
     }
     
-    @IBAction func OnDeleteBtnClick(sender: AnyObject) {
+    @IBAction func OnDeleteBtnClick(_ sender: AnyObject) {
         let alertVC = UIAlertController.init(title: "提示", message: "是否删除任务", preferredStyle:.alert)
         alertVC.addAction(UIAlertAction.init(title: "确定", style: UIAlertActionStyle.default, handler: { (UIAlertAction) in
             if(DownloadTaskDataManager.shareInstance.removeTaskOfId(id: self.taskDetailData.id)){
@@ -132,7 +132,7 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         snapBehaviour.damping = CGFloat.init(NSNumber.init(value: arc4random() % 100)) / 200.0 + 0.5
         self.animator.addBehavior(snapBehaviour)
     }
-    @IBAction func OnNxtBtnClick(sender: AnyObject) {
+    @IBAction func OnNxtBtnClick(_ sender: AnyObject) {
         
     }
     /*
