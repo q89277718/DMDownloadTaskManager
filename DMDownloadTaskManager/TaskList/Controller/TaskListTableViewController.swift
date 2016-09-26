@@ -52,7 +52,7 @@ class TaskListTableViewController: UITableViewController {
         let backItem = UIBarButtonItem.init()
         backItem.title = "Back"
         self.navigationItem.backBarButtonItem = backItem;
-        
+        TestOC.test()
     }
 
     deinit{
