@@ -7,6 +7,6 @@ target 'DMDownloadTaskManager' do
 
     #source 'https://github.com/CocoaPods/Specs.git'
     source 'git@10.10.164.249:thundermobile_ios/cocoapodsspecsclone.git'
-#    pod 'ReactiveCocoa'
-
+#    pod 'ReactiveCocoa', '2.2.3'
+#    pod 'RxSwift'
 end

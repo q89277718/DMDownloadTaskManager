@@ -25,7 +25,6 @@
 		92795B2C1D2E03AB00440599 /* ModifyTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92795B2A1D2E03AB00440599 /* ModifyTaskViewController.swift */; };
 		92795B2D1D2E03AB00440599 /* ModifyTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92795B2B1D2E03AB00440599 /* ModifyTaskViewController.xib */; };
 		928FC1151D785115001CC9EA /* UIViewController+Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928FC1141D785115001CC9EA /* UIViewController+Animator.swift */; };
-		92937AEC1D9541FA00212268 /* TestOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92937AEB1D9541FA00212268 /* TestOC.m */; };
 		C439B1E21C27A21CCF0053B3 /* Pods_DMDownloadTaskManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56443632FBA320BFF681253C /* Pods_DMDownloadTaskManager.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,9 +74,6 @@
 		92795B301D2E3C8400440599 /* DownloadTaskManagerDef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadTaskManagerDef.h; sourceTree = "<group>"; };
 		928FC1141D785115001CC9EA /* UIViewController+Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Animator.swift"; path = "CommonKits/UIKit/UIViewController+Animator.swift"; sourceTree = "<group>"; };
 		92937AE91D9541FA00212268 /* DMDownloadTaskManager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DMDownloadTaskManager-Bridging-Header.h"; sourceTree = "<group>"; };
-		92937AEA1D9541FA00212268 /* TestOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestOC.h; sourceTree = "<group>"; };
-		92937AEB1D9541FA00212268 /* TestOC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestOC.m; sourceTree = "<group>"; };
-		92937AED1D95420E00212268 /* Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
 		B7F7409AE57294449B9ADAB7 /* Pods-DMDownloadTaskManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DMDownloadTaskManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DMDownloadTaskManager/Pods-DMDownloadTaskManager.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,7 +145,6 @@
 		92795AD91D2D189900440599 /* DMDownloadTaskManager */ = {
 			isa = PBXGroup;
 			children = (
-				92937AEE1D98CD4F00212268 /* OC_C++ */,
 				9275E59B1D7808710028E8AA /* CommonKit */,
 				920CA0231D351F2900BFD730 /* Notification */,
 				92795B311D2E3C9B00440599 /* Support */,
@@ -276,16 +271,6 @@
 				928FC1141D785115001CC9EA /* UIViewController+Animator.swift */,
 			);
 			name = UIKit;
-			sourceTree = "<group>";
-		};
-		92937AEE1D98CD4F00212268 /* OC_C++ */ = {
-			isa = PBXGroup;
-			children = (
-				92937AEA1D9541FA00212268 /* TestOC.h */,
-				92937AEB1D9541FA00212268 /* TestOC.m */,
-				92937AED1D95420E00212268 /* Test.h */,
-			);
-			name = "OC_C++";
 			sourceTree = "<group>";
 		};
 		A98DD4E834EC8D0C65B30852 /* Pods */ = {
@@ -500,7 +485,6 @@
 				92795B221D2D3D5F00440599 /* TaskDetailViewController.swift in Sources */,
 				92795B1E1D2D238600440599 /* TaskListTableViewController.swift in Sources */,
 				92795B1B1D2D22C400440599 /* ViewController.swift in Sources */,
-				92937AEC1D9541FA00212268 /* TestOC.m in Sources */,
 				92795B191D2D1DE500440599 /* DownloadTaskDataManager.swift in Sources */,
 				92795ADB1D2D189900440599 /* AppDelegate.swift in Sources */,
 				92795AE31D2D189900440599 /* DMDownloadTaskManager.xcdatamodeld in Sources */,
